@@ -1,0 +1,159 @@
+---
+title: "Lee Macaulay's CV"
+author: Lee Macaulay
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+  resume_mode:
+    value: true
+  privacy_mode:
+    value: true
+output:
+  pagedown::html_resume:
+    css: ['dd_cv.css', 'resume']
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(magrittr) # For the pipe
+source("cv_printing_functions.r")
+
+# Read in all data and initialize a CV printer object
+CV <- create_CV_object(
+  data_location = "https://docs.google.com/spreadsheets/d/1yw_zYFEd5Z4St_4stg3nsoPxfp_5F0WorbAO041igos/edit?usp=sharing",  
+  pdf_mode = params$pdf_mode,
+  resume_mode = params$resume_mode,
+  privacy_mode = params$privacy_mode
+)
+
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+
+```{r}
+if(params$pdf_mode){
+  cat("View this CV online with links at _lmcly.fyi/cv_")
+} else {
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/leemacaulay/cv/raw/master/cv.pdf)")
+}
+```
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_contact_info()
+```
+
+
+
+Skills {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_skill_bars()
+```
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made with the R package [**datadrivencv**](https://github.com/nstrayer/datadrivencv). 
+
+Last updated on `r Sys.Date()`.
+
+
+
+Main
+================================================================================
+
+Lee Macaulay {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+CV %<>% print_text_block("intro") 
+```
+
+
+Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+
+```{r}
+CV %<>% print_section('experience')
+```
+
+<!-- These breaks just force a new page so section doesnt get cut off -->
+
+<br>
+<br>
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('education')
+```
+
+
+
+Awards {data-icon=trophy}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('awards')
+```
+
+
+
+Selected Work {data-icon=microphone}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+CV %<>% print_text_block('portfolio_aside')
+```
+:::
+
+```{r}
+CV %<>% print_section('portfolio')
+```
+
+
+Interests {data-icon=gamepad .no-timeline} 
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_text_block('interests')
+```
+
+
+
+```{r}
+CV %<>% print_links()
+```
+
