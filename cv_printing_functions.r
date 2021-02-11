@@ -38,7 +38,7 @@ create_CV_object <-  function(data_location,
       # My info is in a public sheet so there's no need to do authentication but if you want
       # to use a private sheet, then this is the way you need to do it.
       # designate project-specific cache so we can render Rmd without problems
-      options(gargle_oauth_cache = ".secrets")
+      options(gargle_oauth_email = "lee@mixmul.com")
     }
 
     read_gsheet <- function(sheet_id){

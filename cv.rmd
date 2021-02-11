@@ -26,7 +26,8 @@ source("cv_printing_functions.r")
 
 # Read in all data and initialize a CV printer object
 CV <- create_CV_object(
-  data_location = "https://docs.google.com/spreadsheets/d/1yw_zYFEd5Z4St_4stg3nsoPxfp_5F0WorbAO041igos/edit?usp=sharing",  
+  data_location = "https://docs.google.com/spreadsheets/d/1yw_zYFEd5Z4St_4stg3nsoPxfp_5F0WorbAO041igos/edit?usp=sharing",
+  sheet_is_publicly_readable = FALSE,
   pdf_mode = params$pdf_mode,
   resume_mode = params$resume_mode,
   privacy_mode = params$privacy_mode
