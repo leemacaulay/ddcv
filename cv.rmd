@@ -57,7 +57,7 @@ Aside
 if(params$pdf_mode){
   cat("View this CV online with links at _lmcly.fyi/cv_")
 } else {
-  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/leemacaulay/cv/raw/master/cv.pdf)")
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/leemacaulay/ddcv/raw/main/cv.pdf)")
 }
 ```
 
