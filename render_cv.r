@@ -1,3 +1,5 @@
+library(googlesheets4)
+
 # This script builds both the HTML and PDF versions of your CV
 
 # If you wanted to speed up rendering for googlesheets driven CVs you could use

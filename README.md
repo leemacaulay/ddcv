@@ -8,3 +8,8 @@
 2. Open ddcv project in RStudio.
 3. Run render_cv.r to generate a private pdf (cv-priv.pdf) , public pdf and html version of CV. 
 4. ```git add . && git commit``` then ```git push``` 
+
+#### Troubleshooting
+
+*Can't get Google credentials*
+- have you used ```googlesheets4::gs4_auth()``` in RStudio console before running render_cv.r? 
